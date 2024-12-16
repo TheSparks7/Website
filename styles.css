@@ -1,0 +1,170 @@
+:root { 
+    --primary-bg-color: hsl(281deg 100% 21%);
+    --gradient-start: hsl(240deg 100% 20%);
+    --gradient-end: hsl(55deg 100% 50%);
+    --text-color-light: #FFF;
+    --box-blur: blur(10px);
+    --transition-ease: 0.3s ease;
+    --noicetext-bg: hsl(50deg 100% 95%);
+    --noicetext-color: hsl(210deg 100% 20%);
+    --blur-intensity: blur(8px);
+}
+
+img {
+    width: clamp(250px, 50vw, 282px);
+    border-radius: clamp(15px, 3vw, 40px);
+}
+
+body {
+    color: darkslategrey;
+    background-image: linear-gradient(
+        250deg,
+        var(--gradient-start) 0%,
+        var(--primary-bg-color) 12%,
+        hsl(304deg 100% 23%) 24%,
+        hsl(319deg 100% 30%) 35%,
+        hsl(329deg 100% 36%) 45%,
+        hsl(336deg 100% 41%) 52%,
+        hsl(346deg 83% 51%) 52%,
+        hsl(3deg 95% 61%) 56%,
+        hsl(17deg 100% 59%) 63%,
+        hsl(30deg 100% 55%) 71%,
+        hsl(40deg 100% 50%) 80%,
+        hsl(48deg 100% 50%) 90%,
+        var(--gradient-end) 100%
+    );
+    animation: Noice 3s forwards alternate;
+    display: flex;
+    flex-direction: column;
+    top: 150px;
+    min-height: 100vh;
+    margin: 20px;
+    padding-right: 5vw;
+    min-height: 200vh;
+    padding-top: 20px;
+}
+
+@keyframes Noice {
+    to {
+        background: var(--primary-bg-color);
+    }
+}
+
+h1:hover {
+    transform: scale(1.0256);
+}
+
+h1 {
+    font-family: Calibri, 'Gill Sans MT', Trebuchet MS, sans-serif;
+    animation: Text 3.5s normal forwards;
+}
+
+@keyframes Text {
+    to {
+        color: var(--text-color-light);
+        font-family: monospace;
+        font-weight: bold;
+    }
+}
+
+.boxfortext {
+    position: sticky;
+    top: 20px; /* Adds a gap of 20px */
+    z-index: 10;
+    background-color: hsl(305, 23%, 56%);
+    border-radius: 20px;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.23);
+}
+
+.bb {
+    color: whitesmoke;
+    position: relative;
+    width: clamp(250px, 50vw, 282px);
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(
+        145deg, 
+        hsla(0, 7%, 97%, 0.1), 
+        hsl(0deg 0% 100% / 0.05)
+    );
+    backdrop-filter: var(--box-blur);
+    border: 2px solid hsl(0deg 0% 100% / 0.2);
+    border-radius: clamp(15px, 3vw, 40px);
+    box-shadow: 
+        0 15px 35px hsl(0deg 0% 0% / 0.2),
+        0 5px 15px hsl(0deg 0% 0% / 0.1);
+    transition: 
+        transform var(--transition-ease),
+        box-shadow var(--transition-ease);
+}
+
+.bb:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 20px 40px hsl(0deg 0% 0% / 0.3),
+        0 7px 20px hsl(0deg 0% 0% / 0.15),
+        10px 10px 0px hsl(0deg 0% 0% / 0.3),
+        15px 15px 0px hsl(0deg 0% 0% / 0.2);
+    cursor: pointer;
+}
+
+.bb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsl(0, 0%, 0%, 0.1);
+    backdrop-filter: var(--blur-intensity);
+    opacity: 0;
+    transition: opacity var(--transition-ease);
+    pointer-events: none;
+}
+
+.boxfortext.sticky + .bb:hover::before {
+    opacity: 1;
+}
+
+.noicetext {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.30rem;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-family: 'Georgia', serif;
+    max-width: 1500px;
+    max-height: 250px;
+    line-height: 1.8;
+    font-size: 1.2rem;
+    color: var(--noicetext-color);
+    background: var(--noicetext-bg);
+    border-left: 5px solid plum;
+    border-radius: 8px;
+}
+
+.noicetext h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    color: var(--primary-bg-color);
+}
+
+.content-container {
+    display: flex;
+    gap: 2rem; 
+    align-items: flex-start;
+}
+
+@media only screen and (max-width: 768px) {
+    .content-container {
+        flex-direction: column; 
+        gap: 1rem; 
+    }
+    
+    .noicetext {
+        text-align: center; /* Center text for a better responsive look */
+        margin-top: 1rem;
+    }
+}
