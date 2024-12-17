@@ -34,7 +34,6 @@ body {
         var(--gradient-end) 100%
     );
     animation: Noice 3s forwards alternate;
-    display: flex;
     flex-direction: column;
     top: 150px;
     min-height: 100vh;
@@ -42,7 +41,9 @@ body {
     padding-right: 5vw;
     min-height: 200vh;
     padding-top: 20px;
+    display: flex;
 }
+
 
 @keyframes Noice {
     to {
