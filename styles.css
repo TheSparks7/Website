@@ -1,4 +1,4 @@
-:root { 
+:root {
     --primary-bg-color: hsl(281deg 100% 21%);
     --gradient-start: hsl(240deg 100% 20%);
     --gradient-end: hsl(55deg 100% 50%);
@@ -11,8 +11,21 @@
 }
 
 img {
-    width: clamp(250px, 50vw, 282px);
+    display: block;
+    max-width: 100%;
+    height: auto;
     border-radius: clamp(15px, 3vw, 40px);
+}
+
+@media (max-width: 1000px) {
+    img {
+        margin-left: auto;
+        margin-right: 50%;
+    }
+    .bb {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
 }
 
 body {
@@ -34,15 +47,15 @@ body {
         var(--gradient-end) 100%
     );
     animation: Noice 3s forwards alternate;
+    display: flex;
     flex-direction: column;
     top: 150px;
     min-height: 100vh;
     margin: 20px;
     padding-right: 5vw;
-    min-height: 200vh;
     padding-top: 20px;
-    display: flex;
 }
+
 
 
 @keyframes Noice {
@@ -70,7 +83,7 @@ h1 {
 
 .boxfortext {
     position: sticky;
-    top: 20px; /* Adds a gap of 20px */
+    top: 100px; 
     z-index: 10;
     background-color: hsl(305, 23%, 56%);
     border-radius: 20px;
@@ -156,6 +169,7 @@ h1 {
     display: flex;
     gap: 2rem; 
     align-items: flex-start;
+    flex-wrap: nowrap;
 }
 
 @media only screen and (max-width: 768px) {
